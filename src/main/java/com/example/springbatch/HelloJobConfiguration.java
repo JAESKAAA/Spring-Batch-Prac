@@ -30,16 +30,12 @@ public class HelloJobConfiguration {
     @Bean
     public Step helloStep1() {
         return stepBuilderFactory.get("helloStep1")
-            .tasklet(new Tasklet() {
-                @Override
-                public RepeatStatus execute(StepContribution contribution,
-                    ChunkContext chunkContext) throws Exception {
-                    System.out.println("=======================");
-                    System.out.println(">> Hello Spring Batch!!");
-                    System.out.println("=======================");
+            .tasklet((contribution, chunkContext) -> {
+                System.out.println("=======================");
+                System.out.println(">> Hello Spring Batch!!");
+                System.out.println("=======================");
 
-                    return RepeatStatus.FINISHED;
-                }
+                return RepeatStatus.FINISHED;
             })
             .build();
     }
@@ -47,17 +43,12 @@ public class HelloJobConfiguration {
     @Bean
     public Step helloStep2() {
         return stepBuilderFactory.get("helloStep2")
-            .tasklet(new Tasklet() {
-                @Override
-                public RepeatStatus execute(StepContribution contribution,
-                    ChunkContext chunkContext) throws Exception {
+            .tasklet((contribution, chunkContext) ->{
+                System.out.println("=======================");
+                System.out.println(">> Hello Spring Batch!!");
+                System.out.println("=======================");
 
-                    System.out.println("=======================");
-                    System.out.println(">> step 2 was executed!!");
-                    System.out.println("=======================");
-
-                    return RepeatStatus.FINISHED;
-                }
+                return RepeatStatus.FINISHED;
             })
             .build();
     }
