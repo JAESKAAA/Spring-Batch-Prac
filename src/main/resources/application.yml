@@ -23,6 +23,10 @@ spring:
   config:
     activate:
       on-profile: mysql
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
   datasource:
     hikari:
       jdbc-url: jdbc:mysql://localhost:3306/springbatch?useUnicoe=true&characterEncoding=utf8
